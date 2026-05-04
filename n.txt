@@ -1,0 +1,43 @@
+3. Apply DES algorithm for practical applications.
+import javax.crypto.*;
+import javax.crypto.spec.*;
+import java.util.*;
+public class DESDemo {
+             }
+public static void main(String[] args) throws Exception {
+Scanner sc=new Scanner(System.in);
+System.out.print("Enter Text: ");
+String text=sc.nextLine();
+SecretKey key=KeyGenerator.getInstance("DES").generateKey();
+Cipher c=Cipher.getInstance("DES");
+c.init(Cipher.ENCRYPT_MODE,key);
+byte[] enc=c.doFinal(text.getBytes());
+c.init(Cipher.DECRYPT_MODE,key);
+byte[] dec=c.doFinal(enc);
+System.out.println("Encrypted: "+Base64.getEncoder().encodeToString(enc));
+System.out.println("Decrypted: "+new String(dec));
+}
+Enter Text: hello
+Encrypted: iRHo7F8XKak=
+Decrypted: hello
+=== Code Execution Successful ===4. Apply AES algorithm for practical applications.
+import javax.crypto.*;
+import javax.crypto.spec.*;
+import java.util.*;
+public class AESDemo {
+               public static void main(String[] args) throws Exception {
+Scanner sc=new Scanner(System.in);
+System.out.print("Enter Text: ");
+String text=sc.nextLine();
+KeyGenerator kg=KeyGenerator.getInstance("AES");
+kg.init(128);
+SecretKey key=kg.generateKey();
+Cipher c=Cipher.getInstance("AES");
+c.init(Cipher.ENCRYPT_MODE,key);
+byte[] enc=c.doFinal(text.getBytes());
+c.init(Cipher.DECRYPT_MODE,key);
+byte[] dec=c.doFinal(enc);
+System.out.println("Encrypted: "+Base64.getEncoder().encodeToString(enc));
+System.out.println("Decrypted: "+new String(dec));
+}
+}

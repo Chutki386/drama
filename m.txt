@@ -1,0 +1,14 @@
+import java.security.MessageDigest;
+
+public class SHAExample {
+    public static void main(String[] args) throws Exception {
+        String msg = "Hello";
+
+        MessageDigest md = MessageDigest.getInstance("SHA-256");
+        byte[] hash = md.digest(msg.getBytes());
+
+        for (byte b : hash) {
+            System.out.print(String.format("%02x", b));
+        }
+    }
+}
