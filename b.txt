@@ -1,0 +1,18 @@
+Caesar Cipher
+import java.util.*;
+public class RailFence {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter text: ");
+        String text = sc.nextLine();
+        String row1 = "", row2 = "";
+        for (int i = 0; i < text.length(); i++) {
+            if (i % 2 == 0)
+                row1 += text.charAt(i);
+            else
+                row2 += text.charAt(i);
+        }
+        String enc = row1 + row2;
+        System.out.println("Encrypted: " + enc);
+    }
+}

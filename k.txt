@@ -1,0 +1,21 @@
+SHA-1 Message Digest 
+
+import java.security.MessageDigest;
+
+public class SHA1Example {
+    public static void main(String[] args) {
+        try {
+            String message = "Hello World";
+
+            MessageDigest md = MessageDigest.getInstance("SHA-1");
+            byte[] hash = md.digest(message.getBytes());
+
+            System.out.print("SHA-1 Hash: ");
+            for (byte b : hash) {
+                System.out.printf("%02x", b);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+}

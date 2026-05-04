@@ -1,0 +1,20 @@
+Vigenere Cipher 
+import java.util.*;
+public class Vigenere {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter text: ");
+        String text = sc.nextLine().toUpperCase();
+        System.out.print("Enter key: ");
+        String key = sc.nextLine().toUpperCase();
+        String enc = "", dec = "";
+        for (int i = 0; i < text.length(); i++) {
+            enc += (char)((text.charAt(i) + key.charAt(i % key.length()) - 2*65) % 26 + 65);
+        }
+        for (int i = 0; i < enc.length(); i++) {
+            dec += (char)((enc.charAt(i) - key.charAt(i % key.length()) + 26) % 26 + 65);
+        }
+        System.out.println("Encrypted: " + enc);
+        System.out.println("Decrypted: " + dec);
+    }
+}

@@ -1,0 +1,32 @@
+Diffie–Hellman Key Exchange 
+
+import java.util.Scanner;
+
+public class DiffieHellman {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int p = 23; // prime number
+        int g = 5;  // primitive root
+
+        System.out.print("Enter private key of A: ");
+        int a = sc.nextInt();
+
+        System.out.print("Enter private key of B: ");
+        int b = sc.nextInt();
+
+        // Calculate public keys
+        int A = (int) Math.pow(g, a) % p;
+        int B = (int) Math.pow(g, b) % p;
+
+        // Shared secret key
+        int keyA = (int) Math.pow(B, a) % p;
+        int keyB = (int) Math.pow(A, b) % p;
+
+        System.out.println("Public key of A: " + A);
+        System.out.println("Public key of B: " + B);
+
+        System.out.println("Secret key computed by A: " + keyA);
+        System.out.println("Secret key computed by B: " + keyB);
+    }
+}

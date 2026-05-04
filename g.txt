@@ -1,0 +1,21 @@
+Hill Cipher:
+
+import java.util.*;
+
+public class Hill {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter 2 letters: ");
+        String text = sc.nextLine().toUpperCase();
+
+        int a=3,b=3,c=2,d=5;
+
+        int x = text.charAt(0) - 65;
+        int y = text.charAt(1) - 65;
+
+        int e1 = (a*x + b*y) % 26;
+        int e2 = (c*x + d*y) % 26;
+
+        System.out.println("Encrypted: " + (char)(e1+65) + "" + (char)(e2+65));
+    }
+}

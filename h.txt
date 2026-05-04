@@ -1,0 +1,31 @@
+RSA:
+
+import java.math.BigInteger;
+import java.util.Scanner;
+
+public class RSAExample {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Choose two prime numbers
+        BigInteger p = new BigInteger("3");
+        BigInteger q = new BigInteger("11");
+
+        BigInteger n = p.multiply(q); // n = p*q
+        BigInteger phi = (p.subtract(BigInteger.ONE)).multiply(q.subtract(BigInteger.ONE));
+
+        BigInteger e = new BigInteger("3"); // public key
+        BigInteger d = e.modInverse(phi);   // private key
+
+        System.out.print("Enter message (number): ");
+        BigInteger msg = sc.nextBigInteger();
+
+        // Encryption: c = m^e mod n
+        BigInteger cipher = msg.modPow(e, n);
+        System.out.println("Encrypted message: " + cipher);
+
+        // Decryption: m = c^d mod n
+        BigInteger decrypted = cipher.modPow(d, n);
+        System.out.println("Decrypted message: " + decrypted);
+    }
+}

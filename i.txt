@@ -1,0 +1,30 @@
+Digital Signature 
+
+
+import java.security.*;
+
+public class SimpleSignature {
+    public static void main(String[] args) throws Exception {
+
+        // Generate key pair
+        KeyPairGenerator keyGen = KeyPairGenerator.getInstance("RSA");
+        keyGen.initialize(512);
+        KeyPair pair = keyGen.generateKeyPair();
+
+        String message = "Hello";
+
+        // Create signature
+        Signature sign = Signature.getInstance("SHA1withRSA");
+        sign.initSign(pair.getPrivate());
+        sign.update(message.getBytes());
+        byte[] signature = sign.sign();
+
+        // Verify signature
+        Signature verify = Signature.getInstance("SHA1withRSA");
+        verify.initVerify(pair.getPublic());
+        verify.update(message.getBytes());
+
+        System.out.println("Verified: " + verify.verify(signature));
+    }
+}
+
